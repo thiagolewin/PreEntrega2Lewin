@@ -9,20 +9,28 @@ function FilterList({children,data,params}) {
         setSearchword(e.target.value)
     }
     function FilterItems() {
-        if (searchWord === "") {
-            if(params) {
-                return data.filter((data)=> {
-                    return (data.type === params)
-                }) 
+        let filtrado = data.filter((data)=> {
+            if(data.type == "players") {
+                console.log(data)
+                return (data.defending > 0)
             } else {
                 return data
             }
+        })
+        if (searchWord === "") {
+            if(params) {
+                return filtrado.filter((filtrado)=> {
+                    return (filtrado.type === params)
+                }) 
+            } else {
+                return filtrado
+            }
         } else {
-            return data.filter((data) => {
+            return filtrado.filter((filtrado) => {
                 if(params) {
-                    return (((data.name).toLowerCase()).includes(searchWord.toLowerCase()) && data.type === params)
+                    return (((filtrado.name).toLowerCase()).includes(searchWord.toLowerCase()) && filtrado.type === params)
                 } else {
-                    return (((data.name).toLowerCase()).includes(searchWord.toLowerCase()))
+                    return (((filtrado.name).toLowerCase()).includes(searchWord.toLowerCase()))
                 }
             })
         }

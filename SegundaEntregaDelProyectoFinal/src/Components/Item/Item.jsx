@@ -5,7 +5,7 @@ import UseFetch from '../../hooks/useFetch'
 export default function Item ({...props}) {
     if (props.type == "players") {
         return (
-            <Link to={"/category/players/" + props.id} className='link'>
+            <Link to={"/category/players/item/" + props.id} className='link'>
                 <div className= {"item " + props.type}>
                 <h3>{props.name}</h3>
                 <h4>{props.position}</h4>
@@ -23,15 +23,19 @@ export default function Item ({...props}) {
         )
     } else if (props.type == "teams") {
         return(
+            <Link to={"/category/clubs/item/" + props.id} className='link'>
             <div className= {"item " + props.type}>
             <h3>{props.name}</h3>
             </div>
+            </Link>
         )
     } else if (props.type == "leagues" && props.id != 0) {
         return(
+            <Link to={"/category/leagues/item/" + props.id} className='link'>
             <div className= {"item " + props.type}>
             <h3>{props.name}</h3>
             </div>
+            </Link>
         )
     }
     

@@ -13,14 +13,19 @@ nav img {
     width: auto;
     position: absolute;
     left: 0;
+    margin: 0;
 }
 nav h1 {
     font-size: 2em;
 }
 nav ul {
     display: flex;
+    align-items: center;
     position: absolute;
     right: 0;
+}
+nav ul img {
+    margin-right: 10px;
 }
 nav .link {
     margin-right: 15px;

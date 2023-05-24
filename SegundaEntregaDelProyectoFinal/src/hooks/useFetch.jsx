@@ -6,7 +6,9 @@ export default function UseFetch(url,header,conditions = []) {
         async function leerDatos() {
             let peticion = await fetch(url,header)
             peticion = await peticion.json()
-            peticion = peticion.items
+            if (peticion.items) {
+                peticion = peticion.items
+            }
             setPlayers(peticion)
         }
         setTimeout(leerDatos,1000)

@@ -1,0 +1,47 @@
+
+a {
+  cursor: pointer;
+}
+.carrito {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+ .carrito:hover {
+     animation: vibrar linear infinite 0.7s;
+  }
+.carrito img {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+  }
+.carrito__cantidad {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    background-color: rgb(226, 84, 84);
+  }
+.carrito__cantidad h3 {
+    font-family: 'Proxima Nova', sans-serif;
+    font-size: 0.9em;
+  }
+  @keyframes vibrar {
+    25% {
+      transform: rotateZ(25deg);
+    }
+    50% {
+      transform: rotateZ(0deg);
+    }
+    75% {
+      transform: rotateZ(-25deg);
+    }
+  }
