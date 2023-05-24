@@ -54,6 +54,7 @@ export default function ItemDetail(){
         } else {
             return (
                 <div className="itemDetailed">
+                    <img src={img} alt="" />   
                     <h1>{data.name}</h1>
                 </div>
             )       
