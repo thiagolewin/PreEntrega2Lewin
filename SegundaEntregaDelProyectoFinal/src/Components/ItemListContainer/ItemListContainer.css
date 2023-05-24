@@ -1,0 +1,22 @@
+.ItemListContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ItemListContainer .botones {
+    display: flex;
+    background-color: purple;
+    margin-bottom: 50px;
+}
+.ItemListContainer .botones button {
+    width: 75px;
+    height: 25px;
+    margin: 15px;
+    border-radius: 10px;
+    background-color: white;
+    outline: none;
+    border: none;
+}
+.ItemListContainer .botones button:hover {
+    background-color: rgb(216, 211, 211);
+}

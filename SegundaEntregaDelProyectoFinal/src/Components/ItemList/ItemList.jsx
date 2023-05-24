@@ -1,34 +1,50 @@
 import { useState } from "react"
 import Item from "../Item/Item";
 import './ItemList.css'
-function FilterList({children,players}) {
+import { useParams } from "react-router-dom"
+import ItemDetail from "../ItemDetailContainer/ItemDetailContainer";
+function FilterList({children,data,params}) {
     const [searchWord, setSearchword] = useState("");
     function OnChange(e) {
         setSearchword(e.target.value)
     }
     function FilterItems() {
         if (searchWord === "") {
-            return players
+            if(params) {
+                return data.filter((data)=> {
+                    return (data.type === params)
+                }) 
+            } else {
+                return data
+            }
         } else {
-            return players.filter((player) => {
-                 return (((player.name).toLowerCase()).includes(searchWord.toLowerCase()))
+            return data.filter((data) => {
+                if(params) {
+                    return (((data.name).toLowerCase()).includes(searchWord.toLowerCase()) && data.type === params)
+                } else {
+                    return (((data.name).toLowerCase()).includes(searchWord.toLowerCase()))
+                }
             })
         }
     }
     return children(OnChange,FilterItems())
 }
 
-export default function ItemList({players}) {
+export default function ItemList({data}) {
+    let params = useParams()
+    let paramsCat = params.cat
     return (
-        <div className="jugadores">
-            <FilterList players={players}>
+        <div className="dataInput">
+            <FilterList data={data} params = {paramsCat}>
             {
                 (OnChange,FilterItems) => (
                 <>
                     <input type="text" onChange={OnChange}/>
-                    {FilterItems.map((item)=> {
-                        return <Item key={item.id} {...item}></Item>
+                    <div className="data">
+                    {FilterItems.map((item,i)=> {
+                        return <Item type={item.type} key={i} {...item}></Item>
                     })}
+                    </div>
                 </>
                 )
             }
